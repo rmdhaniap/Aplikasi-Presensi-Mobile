@@ -1,5 +1,7 @@
 package com.example.aplikasipresensi.ui.login
 
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import androidx.datastore.preferences.protobuf.Api
 import androidx.lifecycle.LiveData
@@ -18,28 +20,29 @@ import retrofit2.Response
 
 class LoginViewModel(private val pref: UserPreference): ViewModel() {
 
-    val _loginResult = MutableLiveData<UserModel>()
-    val loginResult: LiveData<UserModel> = _loginResult
-
-    fun login(username: String, password: String) {
-        val client = ApiConfig.getApiService().login(username, password)
-        client.enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                if (response.isSuccessful && response.body() != null) {
-                    _loginResult.postValue(
-                        response.body()?.let {
-                            UserModel(it.message, it.status, it.token, it.user)
-                        }
-                    )
-                    saveToken(response.body()?.token.toString())
-                }
-            }
-
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Log.d("LoginViewModel", "onFailure: ${t.message}")
-            }
-        })
-    }
+//    val _loginResult = MutableLiveData<UserModel>()
+//    val loginResult: LiveData<UserModel> = _loginResult
+//
+//    fun login(username: String, password: String) {
+//
+//        val client = ApiConfig.getApiService().login(username, password)
+//        client.enqueue(object : Callback<LoginResponse> {
+//            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+//                if (response.isSuccessful && response.body() != null) {
+//                    _loginResult.postValue(
+//                        response.body()?.let {
+//                            UserModel(it.message, it.status, it.token, it.user)
+//                        }
+//                    )
+//                    saveToken(response.body()?.token.toString())
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+//                Log.d("LoginViewModel", "onFailure: ${t.message}")
+//            }
+//        })
+//    }
     private fun saveToken(token: String) {
         viewModelScope.launch {
             pref.saveToken(token)

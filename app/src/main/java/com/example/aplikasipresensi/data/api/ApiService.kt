@@ -1,6 +1,7 @@
 package com.example.aplikasipresensi.data.api
 
 import com.example.aplikasipresensi.data.response.LoginResponse
+import com.google.gson.JsonObject
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -15,7 +16,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST("api/auth")
     fun login(
-        @Field("username") username: String,
+        @Field("username") username: String?,
         @Field("password") password: String
-    ): Call<LoginResponse>
+    ): Call<JsonObject>?
 }

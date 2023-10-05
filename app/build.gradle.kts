@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id ("kotlin-parcelize")
+    id ("kotlin-kapt")
 }
 
 android {
@@ -46,6 +47,7 @@ dependencies {
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.databinding:databinding-runtime:8.1.2")
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -55,6 +57,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation ("com.google.code.gson:gson:2.8.6")
 
     //DataStore dan LifeCycle
     implementation ("androidx.datastore:datastore-preferences:1.0.0")
@@ -62,5 +65,12 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
 
     implementation ("com.jakewharton.threetenabp:threetenabp:1.3.0")
+
+    // Custom Permission
+    implementation ("com.karumi:dexter:6.2.2")
+
+    // Rx Java
+    implementation ("io.reactivex.rxjava3:rxandroid:3.0.0")
+    implementation ("io.reactivex.rxjava3:rxjava:3.0.0")
 
 }
