@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Aplikasi Presensi</string>
+    <string name="location_required_error">Location services must be enabled to use the app</string>
 </resources>
