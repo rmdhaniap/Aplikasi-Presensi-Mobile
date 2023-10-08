@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val name = intent.getStringExtra("name")
+        val token = intent.getStringExtra("token")
 
         binding.namaUser.text = "$name"
 
@@ -66,6 +67,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.cardMasuk.setOnClickListener {
             intent = Intent(this@MainActivity, PresensiMasukActivity::class.java)
+            intent.putExtra("token", token)
             startActivity(intent)
         }
 

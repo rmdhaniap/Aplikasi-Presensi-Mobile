@@ -89,6 +89,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                         val json = JSONObject(response.body().toString())
                         val status = json.getBoolean("status")
                         val message = json.getString("message")
+                        val token = json.getString("token")
 
                         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 
@@ -98,6 +99,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
                             val intent = Intent(context, MainActivity::class.java)
                             intent.putExtra("name", name)
+                            intent.putExtra("token", token)
                             finish()
                             startActivity(intent)
                         } else {
