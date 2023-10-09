@@ -62,6 +62,7 @@
                     android:layout_marginTop="20dp">
 
                     <ImageView
+                        android:id="@+id/fotoUser"
                         android:layout_width="170dp"
                         android:layout_height="170dp"
                         android:src="@drawable/ic_user" />

@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <FrameLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/wrap_camera"
         android:layout_width="157dp"
         android:layout_height="118dp"
         android:background="@drawable/border_line_dotted"
@@ -31,7 +31,14 @@
         app:layout_constraintVertical_bias="0.499">
 
         <ImageView
-            android:id="@+id/imageSelfie"
+            android:id="@+id/imgv_user"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/imgv_camera"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
@@ -52,7 +59,7 @@
         app:layout_constraintVertical_bias="0.599" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/etKeterangan"
         android:layout_width="344dp"
         android:layout_height="wrap_content"
         android:hint="Masukkan Keterangan"
@@ -82,5 +89,72 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapView"
         app:layout_constraintVertical_bias="0.911" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_success"
+        android:visibility="gone"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:cardCornerRadius="20dp"
+        android:layout_centerInParent="true"
+        app:contentPadding="10dp"
+        android:layout_margin="5dp"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/ic_round_check_circle_24"
+                android:layout_gravity="center"
+                app:tint="@color/teal_200" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="09:10 WIB"/>
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="11sp"
+                android:textColor="@color/black"
+                android:text="Senin 19 September 2023"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="Berhasil"/>
+
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kembali"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_circle_radius"
+                android:gravity="center"
+                android:backgroundTint="@color/teal_200"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

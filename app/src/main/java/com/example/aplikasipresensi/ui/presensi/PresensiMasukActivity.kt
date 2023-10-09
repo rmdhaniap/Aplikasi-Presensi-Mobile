@@ -118,6 +118,10 @@ class PresensiMasukActivity : AppCompatActivity(), OnMapReadyCallback {
 
         isPermissionGranted()
 
+        binding.hitungJarak.setOnClickListener {
+
+        }
+
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.mapView) as SupportMapFragment
         mapFragment.getMapAsync(this)
