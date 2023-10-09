@@ -11,34 +11,19 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import androidx.lifecycle.ViewModelProvider
 import com.example.aplikasipresensi.MainActivity
 import com.example.aplikasipresensi.R
 import com.example.aplikasipresensi.data.api.ApiConfig
 import com.example.aplikasipresensi.data.api.ApiService
-import com.example.aplikasipresensi.data.preference.UserPreference
-import com.example.aplikasipresensi.databinding.ActivityLoginBinding
-import com.example.aplikasipresensi.ui.model.ViewModelFactory
-import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
-import com.google.gson.JsonParser
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
