@@ -1,22 +1,9 @@
 package com.example.aplikasipresensi.ui.login
 
-import android.content.Context
-import android.content.Intent
-import android.util.Log
-import androidx.datastore.preferences.protobuf.Api
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.aplikasipresensi.data.api.ApiConfig
-import com.example.aplikasipresensi.data.preference.UserModel
 import com.example.aplikasipresensi.data.preference.UserPreference
-import com.example.aplikasipresensi.data.response.LoginResponse
-import com.example.aplikasipresensi.data.response.User
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class LoginViewModel(private val pref: UserPreference): ViewModel() {
 

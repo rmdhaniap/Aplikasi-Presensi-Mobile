@@ -10,6 +10,7 @@ import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.location.Location
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -69,12 +70,14 @@ class PresensiMasukActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityPresensiMasukBinding
+    private val kantorLocation = LatLng(-7.812879519672033, 110.37669502422007)
     private var marker: Marker? = null
     private val CAMERA = 1
     private val CAMERA_REQUEST_CODE = 5
     lateinit var context: Context
     lateinit var wrapCamera : FrameLayout
     lateinit var cardSuccess: CardView
+    lateinit var tvJarak: TextView
     lateinit var tvTime : TextView
     lateinit var tvDate : TextView
     lateinit var imgvCamera : ImageView
@@ -100,6 +103,7 @@ class PresensiMasukActivity : AppCompatActivity(), OnMapReadyCallback {
         tvTime = findViewById(R.id.tv_time)
         tvDate = findViewById(R.id.tv_date)
         btnBack = findViewById(R.id.btn_back)
+        tvJarak = findViewById(R.id.tv_jarak)
 
         wrapCamera.setOnClickListener {
             val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -134,7 +138,25 @@ class PresensiMasukActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(loc).title("Lokasi Kantor"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(loc))
 
+        mMap.setOnMyLocationChangeListener { location ->
+            val currentLocation = LatLng(location.latitude, location.longitude)
+            val distance = calCulateDistance(currentLocation, kantorLocation)
+            val formattedDistance = String.format("%.2f KM", distance/1000)
+
+            binding.tvJarak.text = " $formattedDistance"
+        }
+
         enableMyLocation()
+    }
+
+    private fun calCulateDistance(currentLocation: LatLng, targetLocation: LatLng): Float {
+        val results = FloatArray(1)
+        Location.distanceBetween(
+            currentLocation.latitude, currentLocation.longitude,
+            targetLocation.latitude, targetLocation.longitude,
+            results
+        )
+        return results[0]
     }
 
     private fun setMapLongCLick(map: GoogleMap) {
