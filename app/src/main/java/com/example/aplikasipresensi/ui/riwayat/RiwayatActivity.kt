@@ -78,6 +78,10 @@ class RiwayatActivity : AppCompatActivity() {
             finish()
         }
 
+        btnBack.setOnClickListener {
+            cardDetail.visibility = View.GONE
+        }
+
         swipeRefreshLayout.setOnRefreshListener {
             val startDate = "$currentYear-$currentMonth-1"
             val endDate = "$currentYear-$currentMonth-${getJumlahHari(currentMonth, currentYear)}"
@@ -208,7 +212,6 @@ class RiwayatActivity : AppCompatActivity() {
             })
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun formatTime(inputDate: String): String {
         // Parse input string to LocalDateTime
         val dateTime = LocalDateTime.parse(inputDate, DateTimeFormatter.ISO_DATE_TIME)
@@ -219,8 +222,6 @@ class RiwayatActivity : AppCompatActivity() {
         return formattedTime;
     }
 
-
-    @RequiresApi(Build.VERSION_CODES.O)
     fun getNumberDate(inputDate: String): Int {
         // Parse input string to LocalDateTime
         val dateTime = LocalDateTime.parse(inputDate, DateTimeFormatter.ISO_DATE_TIME)
