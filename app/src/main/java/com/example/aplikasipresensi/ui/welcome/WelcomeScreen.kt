@@ -3,8 +3,6 @@ package com.example.aplikasipresensi.ui.welcome
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.aplikasipresensi.MainActivity
-import com.example.aplikasipresensi.R
 import com.example.aplikasipresensi.databinding.ActivityWelcomeScreenBinding
 import com.example.aplikasipresensi.ui.login.LoginActivity
 

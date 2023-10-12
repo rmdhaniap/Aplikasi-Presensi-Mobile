@@ -16,7 +16,6 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import androidx.lifecycle.lifecycleScope
 import com.example.aplikasipresensi.MainActivity
 import com.example.aplikasipresensi.R
 import com.example.aplikasipresensi.data.api.ApiConfig
@@ -24,8 +23,6 @@ import com.example.aplikasipresensi.data.api.ApiService
 import com.example.aplikasipresensi.data.preference.UserModel
 import com.google.gson.Gson
 import com.google.gson.JsonObject
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Call
@@ -34,10 +31,6 @@ import retrofit2.Response
 
 private val USERNAME_KEY = stringPreferencesKey("username")
 private val TOKEN_KEY = stringPreferencesKey("token")
-
-//private val dataStore by lazy {
-//    createDataStore(name = "user_data")
-//}
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "user_model")
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
