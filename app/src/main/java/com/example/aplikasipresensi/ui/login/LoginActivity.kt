@@ -13,20 +13,33 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.lifecycleScope
 import com.example.aplikasipresensi.MainActivity
 import com.example.aplikasipresensi.R
 import com.example.aplikasipresensi.data.api.ApiConfig
 import com.example.aplikasipresensi.data.api.ApiService
+import com.example.aplikasipresensi.data.preference.UserModel
+import com.google.gson.Gson
 import com.google.gson.JsonObject
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+private val USERNAME_KEY = stringPreferencesKey("username")
+private val TOKEN_KEY = stringPreferencesKey("token")
 
+//private val dataStore by lazy {
+//    createDataStore(name = "user_data")
+//}
+
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "user_model")
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var username: EditText
@@ -35,6 +48,27 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var mApiClient: ApiService
     lateinit var loading: ProgressDialog
     lateinit var context : Context
+
+    suspend fun saveLoginData(username: String, token: String) {
+        dataStore.edit { preferences ->
+            preferences[USERNAME_KEY] = username
+            preferences[TOKEN_KEY] = token
+        }
+    }
+
+//    private suspend fun checkPreviousLogin() {
+//        val preferences = dataStore.data.first()
+//        val savedUsername = preferences[USERNAME_KEY]
+//        val savedToken = preferences[TOKEN_KEY]
+//
+//        if (!savedUsername.isNullOrBlank() && !savedToken.isNullOrBlank()) {
+//            val intent = Intent(context, MainActivity::class.java)
+//            intent.putExtra("name", savedUsername)
+//            intent.putExtra("token", savedToken)
+//            finish()
+//            startActivity(intent)
+//        }
+//    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -48,6 +82,17 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         btnLogin = findViewById(R.id.btnLogin)
 
         btnLogin.setOnClickListener(this)
+
+//        lifecycleScope.launch {
+//            checkPreviousLogin()
+//        }
+    }
+
+    private suspend fun saveUserToDataStore(userModel: UserModel) {
+        val dataStoreKey = stringPreferencesKey("user_model")
+        dataStore.edit { preferences ->
+            preferences[dataStoreKey] = Gson().toJson(userModel)
+        }
     }
 
     override fun onClick(view: View) {
@@ -81,6 +126,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                         if (status) {
                             val userObject = json.getJSONObject("user")
                             val name = userObject.getString("name")
+
+                            //simpan data login ke DataStore
+                            val userModel = UserModel(username, token)
+                            //saveUserToDataStore(userModel)
 
                             val intent = Intent(context, MainActivity::class.java)
                             intent.putExtra("name", name)
