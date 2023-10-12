@@ -37,16 +37,6 @@ interface ApiService {
         @Field("keterangan") keterangan: String?,
     ): Call<JsonObject>?
 
-    @FormUrlEncoded
-    @POST("api/form/presensi")
-    fun absenKeluar(
-        @Header("Authorization") authorization: String,
-        @Field("tipe") tipe: String?,
-        @Field("foto") foto: String?,
-        @Field("koordinat") koordinat: String?,
-        @Field("keterangan") keterangan: String?,
-    ): Call<JsonObject>?
-
     @GET("api/user/riwayat")
     fun riwayat(
         @Header("Authorization") authorization: String,

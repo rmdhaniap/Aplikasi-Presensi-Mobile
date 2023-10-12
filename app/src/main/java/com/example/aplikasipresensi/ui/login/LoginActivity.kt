@@ -127,10 +127,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                             val userObject = json.getJSONObject("user")
                             val name = userObject.getString("name")
 
-                            //simpan data login ke DataStore
-                            val userModel = UserModel(username, token)
-                            //saveUserToDataStore(userModel)
-
                             val intent = Intent(context, MainActivity::class.java)
                             intent.putExtra("name", name)
                             intent.putExtra("token", token)

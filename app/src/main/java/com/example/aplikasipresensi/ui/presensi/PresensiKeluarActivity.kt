@@ -314,7 +314,7 @@ class PresensiKeluarActivity : AppCompatActivity(), OnMapReadyCallback {
         val mApiService: ApiService = apiConfig.getApiService()
         val koordinate = "Lat: %1$.5f, Long: %2$.5f"
 
-        mApiService.absenKeluar("Bearer ${token}", "2", foto, koordinate, binding.etKeterangan.text.toString())?.enqueue(object :
+        mApiService.absen("Bearer ${token}", "2", foto, koordinate, binding.etKeterangan.text.toString())?.enqueue(object :
             Callback<JsonObject?> {
             override fun onResponse(call: Call<JsonObject?>, response: Response<JsonObject?>) {
                 if (response.isSuccessful) {

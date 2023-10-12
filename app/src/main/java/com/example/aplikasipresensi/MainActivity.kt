@@ -12,6 +12,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.aplikasipresensi.databinding.ActivityMainBinding
+import com.example.aplikasipresensi.ui.about.AboutActivity
 import com.example.aplikasipresensi.ui.login.LoginActivity
 import com.example.aplikasipresensi.ui.presensi.PresensiKeluarActivity
 import com.example.aplikasipresensi.ui.presensi.PresensiMasukActivity
@@ -106,7 +107,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.cardRiwayat.setOnClickListener {
-            val intent = Intent(this, RiwayatActivity::class.java)
+            val intent = Intent(this@MainActivity, RiwayatActivity::class.java)
+            intent.putExtra("token", token)
+            startActivity(intent)
+        }
+
+        binding.cardAbout.setOnClickListener {
+            intent = Intent(this@MainActivity, AboutActivity::class.java)
             intent.putExtra("token", token)
             startActivity(intent)
         }
