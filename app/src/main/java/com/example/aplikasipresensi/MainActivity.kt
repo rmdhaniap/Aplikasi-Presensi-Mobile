@@ -52,28 +52,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.namaUser.text = "$name"
 
-//        val jsonResponse = """
-//            {
-//                "id": 1,
-//                "nama_aplikasi": "Aplikasi Presensi",
-//                "nama_singkat_aplikasi": "Presensi",
-//                "logo": "http:\/\/103.65.214.250:8211\/storage\/gambar\/logo\/e7de10be-f01a-4b96-9921-59376b3b9f63.png",
-//                "daerah": "Global Intermedia",
-//                "deskripsi": "Aplikasi untuk presensi",
-//                "warna": "#ffffff",
-//                "koordinat": "-7.813111492789422, 110.37669583357997",
-//                "today": "Rabu, 4 Oktober 2023"
-//            }
-//        """
-
-//        val gson = Gson()
-//        val responseObject = gson.fromJson(jsonResponse, ResponseObject::class.java)
-//
-//        val today = responseObject.today
-//
-//        binding.txtJam.text = "${getCurrentTime()}"
-//        binding.txtDate.text = "${getCurrentDate()}"
-
         val handler = Handler(Looper.getMainLooper())
         handler.post(object : Runnable {
             override fun run() {
@@ -87,10 +65,6 @@ class MainActivity : AppCompatActivity() {
                 handler.postDelayed(this, 1000)
             }
         })
-
-//        if (intent.extras != null) {
-//            binding.namaUser.setText(intent.getStringExtra("name"))
-//        }
 
         binding.cardMasuk.setOnClickListener {
             intent = Intent(this@MainActivity, PresensiMasukActivity::class.java)
@@ -118,26 +92,4 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
-//    private fun getCurrentTime(): String {
-//        val currentTime = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
-//        return currentTime
-//    }
-//
-//    private fun getCurrentDate(): String {
-//        val currentDate = SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.getDefault())
-//        return currentDate.toString()
-//    }
-//
-//    data class ResponseObject(
-//        val id: Int,
-//        val nama_aplikasi: String,
-//        val nama_singkat_aplikasi: String,
-//        val logo: String,
-//        val daerah: String,
-//        val deskripsi: String,
-//        val warna: String,
-//        val koordinat: String,
-//        val today: String
-//    )
 }
