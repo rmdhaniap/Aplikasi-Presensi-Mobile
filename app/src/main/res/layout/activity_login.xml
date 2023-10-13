@@ -18,7 +18,9 @@
             android:id="@+id/btn_back_home"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_arrow_left" />
+            android:src="@drawable/ic_arrow_left"
+            android:alpha="0"
+            tools:alpha="100"/>
 
     </LinearLayout>
 
@@ -33,6 +35,7 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -42,13 +45,18 @@
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:alpha="0"
+                tools:alpha="100"/>
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgLogin"
                 android:layout_width="267dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
-                android:src="@drawable/img_asset" />
+                android:src="@drawable/img_asset"
+                android:alpha="0"
+                tools:alpha="100"/>
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -82,6 +90,7 @@
                         android:layout_width="344dp"
                         android:layout_height="55dp"
                         android:layout_gravity="center"
+                        android:alpha="0"
                         android:fontFamily="@font/poppinsregular"
                         android:hint="Masukan Username"
                         android:imeOptions="actionNext"
@@ -90,7 +99,8 @@
                         android:singleLine="true"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        tools:alpha="100" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -113,6 +123,7 @@
                         android:layout_width="344dp"
                         android:layout_height="55dp"
                         android:layout_gravity="center"
+                        android:alpha="0"
                         android:fontFamily="@font/poppinsregular"
                         android:hint="Masukan Password"
                         android:imeOptions="actionDone"
@@ -121,7 +132,8 @@
                         android:singleLine="true"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        tools:alpha="100" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -141,7 +153,9 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     app:cornerRadius="20dp"
-                    app:elevation="5dp" />
+                    app:elevation="5dp"
+                    android:alpha="0"
+                    tools:alpha="100"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

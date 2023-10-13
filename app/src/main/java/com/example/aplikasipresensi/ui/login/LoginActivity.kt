@@ -1,5 +1,8 @@
 package com.example.aplikasipresensi.ui.login
 
+import android.animation.Animator
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
@@ -63,6 +66,28 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.btnBackHome.setOnClickListener {
             finish()
+        }
+
+        playAnimation()
+    }
+
+    private fun playAnimation() {
+        ObjectAnimator.ofFloat(binding.imgLogin, View.TRANSLATION_X, -30f, 30f).apply {
+            duration = 600
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+        }.start()
+
+        val back = ObjectAnimator.ofFloat(binding.btnBackHome, View.ALPHA, 1f).setDuration(100)
+        val textLogin = ObjectAnimator.ofFloat(binding.txtLogin, View.ALPHA, 1f).setDuration(100)
+        val name = ObjectAnimator.ofFloat(binding.inputNama, View.ALPHA, 1f).setDuration(100)
+        val pass = ObjectAnimator.ofFloat(binding.inputPassword, View.ALPHA, 1f).setDuration(100)
+        val btn = ObjectAnimator.ofFloat(binding.btnLogin, View.ALPHA, 1f).setDuration(100)
+        val img = ObjectAnimator.ofFloat(binding.imgLogin, View.ALPHA, 1f).setDuration(100)
+
+        AnimatorSet().apply {
+            playSequentially(back, textLogin, img , name, pass, btn)
+            start()
         }
     }
 
