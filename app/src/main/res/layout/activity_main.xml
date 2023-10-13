@@ -27,11 +27,17 @@
             android:layout_marginRight="16dp"
             android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_logout"
+                android:layout_marginLeft="350dp"
+                android:layout_marginTop="10dp"/>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
             </LinearLayout>
 
         </LinearLayout>
@@ -48,7 +54,7 @@
             android:focusable="true"
             app:cardBackgroundColor="#FFFF"
             app:cardCornerRadius="30dp"
-            app:cardElevation="50dp">
+            android:layout_gravity="center">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -134,7 +140,6 @@
                 android:fontFamily="@font/poppinsmedium"
                 android:text="Senin, 18 September 2023"
                 android:textColor="@color/black" />
-
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -169,7 +174,6 @@
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="10dp"
                 app:cardBackgroundColor="#FFF3E0">
 
                 <RelativeLayout
@@ -201,7 +205,7 @@
                         android:layout_marginEnd="39dp"
                         android:layout_marginRight="39dp"
                         android:layout_marginBottom="3dp"
-                        android:src="@drawable/icon_masuk" />
+                        android:src="@drawable/ic_masuk" />
 
                 </RelativeLayout>
 
@@ -216,7 +220,6 @@
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="10dp"
                 app:cardBackgroundColor="#E1F5FE">
 
                 <RelativeLayout
@@ -248,7 +251,7 @@
                         android:layout_marginEnd="45dp"
                         android:layout_marginRight="45dp"
                         android:layout_marginBottom="3dp"
-                        android:src="@drawable/icon_keluar" />
+                        android:src="@drawable/ic_out" />
 
                 </RelativeLayout>
 
@@ -274,7 +277,6 @@
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="10dp"
                 app:cardBackgroundColor="#FBE9E7">
 
                 <RelativeLayout
@@ -306,7 +308,7 @@
                         android:layout_marginEnd="50dp"
                         android:layout_marginRight="50dp"
                         android:layout_marginBottom="3dp"
-                        android:src="@drawable/icon_riwayat" />
+                        android:src="@drawable/ic_history" />
 
                 </RelativeLayout>
 
@@ -321,7 +323,6 @@
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="10dp"
                 app:cardBackgroundColor="#EDE7F6">
 
                 <RelativeLayout
@@ -351,7 +352,7 @@
                         android:layout_marginTop="36dp"
                         android:layout_marginRight="26dp"
                         android:layout_marginBottom="3dp"
-                        android:src="@drawable/icon_about" />
+                        android:src="@drawable/ic_info" />
 
                 </RelativeLayout>
 
