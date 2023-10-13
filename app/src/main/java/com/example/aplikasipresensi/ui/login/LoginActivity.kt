@@ -21,6 +21,7 @@ import com.example.aplikasipresensi.R
 import com.example.aplikasipresensi.data.api.ApiConfig
 import com.example.aplikasipresensi.data.api.ApiService
 import com.example.aplikasipresensi.data.preference.UserModel
+import com.example.aplikasipresensi.databinding.ActivityLoginBinding
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import org.json.JSONException
@@ -35,6 +36,8 @@ private val TOKEN_KEY = stringPreferencesKey("token")
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "user_model")
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
+    private lateinit var binding: ActivityLoginBinding
+
     lateinit var username: EditText
     lateinit var password: EditText
     lateinit var btnLogin: Button
@@ -42,29 +45,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var loading: ProgressDialog
     lateinit var context : Context
 
-    suspend fun saveLoginData(username: String, token: String) {
-        dataStore.edit { preferences ->
-            preferences[USERNAME_KEY] = username
-            preferences[TOKEN_KEY] = token
-        }
-    }
-
-//    private suspend fun checkPreviousLogin() {
-//        val preferences = dataStore.data.first()
-//        val savedUsername = preferences[USERNAME_KEY]
-//        val savedToken = preferences[TOKEN_KEY]
-//
-//        if (!savedUsername.isNullOrBlank() && !savedToken.isNullOrBlank()) {
-//            val intent = Intent(context, MainActivity::class.java)
-//            intent.putExtra("name", savedUsername)
-//            intent.putExtra("token", savedToken)
-//            finish()
-//            startActivity(intent)
-//        }
-//    }
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         context = this@LoginActivity
         val apiConfig = ApiConfig()
@@ -76,15 +61,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         btnLogin.setOnClickListener(this)
 
-//        lifecycleScope.launch {
-//            checkPreviousLogin()
-//        }
-    }
-
-    private suspend fun saveUserToDataStore(userModel: UserModel) {
-        val dataStoreKey = stringPreferencesKey("user_model")
-        dataStore.edit { preferences ->
-            preferences[dataStoreKey] = Gson().toJson(userModel)
+        binding.btnBackHome.setOnClickListener {
+            finish()
         }
     }
 

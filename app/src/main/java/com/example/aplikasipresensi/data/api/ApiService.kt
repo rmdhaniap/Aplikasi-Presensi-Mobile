@@ -1,5 +1,6 @@
 package com.example.aplikasipresensi.data.api
 
+import com.example.aplikasipresensi.data.response.InformasiUmum
 import com.google.gson.JsonObject
 import okhttp3.MultipartBody
 import retrofit2.Call
@@ -43,4 +44,7 @@ interface ApiService {
         @Query("startDate") startDate: String?,
         @Query("endDate") endDate: String?
     ): Call<JsonObject>?
+
+    @GET("api/umum")
+    fun getInformasiUmum(): Call<InformasiUmum>
 }
